@@ -17,17 +17,19 @@ import com.intellij.build.events.impl.FailureResultImpl
 import com.intellij.build.events.impl.SkippedResultImpl
 import com.intellij.build.events.impl.SuccessResultImpl
 import com.intellij.openapi.diagnostic.Logger
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CopyOnWriteArrayList
 
 internal class BuildViewManagerListener : BuildProgressListener {
 
     // Define logger
     private val log = Logger.getInstance(BuildViewManagerListener::class.java)
 
-    private val tasks = mutableListOf<TaskInfo>()
-    private val taskStartTimes = mutableMapOf<String, Long>()
+    private val tasks = CopyOnWriteArrayList<TaskInfo>()
+    private val taskStartTimes = ConcurrentHashMap<String, Long>()
 
     // Fallback: statuses parsed from Gradle output ("> Task :foo UP-TO-DATE")
-    private val outputStatuses = mutableMapOf<String, TaskStatus>()
+    private val outputStatuses = ConcurrentHashMap<String, TaskStatus>()
 
     private var buildStartMs = 0L
     private var diagnosticLogged = false
