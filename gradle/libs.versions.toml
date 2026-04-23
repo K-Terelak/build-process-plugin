@@ -8,7 +8,7 @@ changelog = "2.5.0"
 # https://youtrack.jetbrains.com/issue/IJPL-236548/Gradle-test-task-fails-with-Couldnt-resolve-Android-Studio-download-URL-for-version#focus=Comments-27-13453420.0-0
 intelliJPlatform = "2.12.0"
 kotlin = "2.3.0"
-kover = "0.9.5"
+kover = "0.9.7"
 qodana = "2025.3.1"
 
 [libraries]
